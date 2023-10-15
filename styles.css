@@ -1,0 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+    background-color: #8cfaaf;
+    color: #000000;
+    padding: 10px 20px;
+    margin-top: 0lvw;
+}
+
+.logo img {
+    height: 120px;
+}
+
+.title {
+    font-size: 36px;
+    font-weight: bold;
+    text-decoration:underline;
+    text-shadow: #d63434;
+}
+
+.search input {
+    padding: 8px;
+    margin-right: 5px;
+    border-style: double;
+    border:#b84242;
+}
+
+.search button {
+    padding: 8px 15px;
+    justify-content:flex-end;
+    background-color: #cb3c26;
+    border:color-mix(in srgb, color percentage, color percentage);
+    color: #ffffff;
+    cursor:help;
+}
+
+.user-options a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.main {
+    padding: 20px;
+}
+
+.chart {
+    text-align: center;
+}
+
+.chart img {
+    max-width: 100%;
+    height: auto;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Stock Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <canvas id="stockChart" width="800" height="400"></canvas>
+    
+    <script>
+        const apiKey = 'YOUR_ALPHA_VANTAGE_API_KEY';
+        const symbol = 'AAPL'; // Replace with the stock symbol you want to track
+
+        // Fetch real-time stock data from Alpha Vantage API
+        fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=5min&apikey=${apiKey}`)
+            .then(response => response.json())
+            .then(data => {
+                const timeSeries = data['Time Series (5min)'];
+                const labels = Object.keys(timeSeries).reverse();
+                const prices = labels.map(label => parseFloat(timeSeries[label]['1. open']));
+
+                const ctx = document.getElementById('stockChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Stock Price',
+                            data: prices,
+                            borderColor: 'red',
+                            fill: false
+                        }]
+                    },
+                    options: {
+                        responsive: true
+                    }
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    </script>
+</body>
+</html>
